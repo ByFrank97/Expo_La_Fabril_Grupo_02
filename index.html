@@ -143,7 +143,6 @@
             color: #1A202C;
             text-align: center;
             height: auto; /* Asegura que el contenido dicte la altura */
-            min-height: 250px; /* Altura mínima para evitar que se vea muy pequeño */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -347,15 +346,15 @@
                 </section>
             </div>
 
-            <!-- Nueva sección para los mockups de redes sociales -->
+            <!-- Sección para los mockups de redes sociales -->
             <div id="section-10-mockups" class="section-content">
-                <section class="text-center w-full max-w-5xl mx-auto flex flex-col justify-center items-center h-full"> <!-- Añadido flexbox para centrar contenido -->
+                <section class="text-center w-full max-w-5xl mx-auto flex flex-col justify-center items-center h-full">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                         <div class="mockup-card mx-auto">
                             <div class="mockup-header">Post Estático (Instagram/Facebook)</div>
                             <div class="mockup-content flex flex-col justify-center items-center">
                                 <img src="01.png" alt="Post Estático" class="w-full h-auto object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
-                                <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu cocina, mañana brillará en el bosque. #HuellaLimpia"</p>
+                                <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu hogar, mañana crecerá en el planeta. #HuellaLimpia"</p>
                             </div>
                         </div>
                         <div class="mockup-card mx-auto">
@@ -373,23 +372,29 @@
                 <section class="text-center w-full max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Landing Page y QR</h2>
                     <p class="mt-4 text-md md:text-lg">Un código QR en los empaques dirigirá a los consumidores a una landing page dedicada, con información detallada sobre el proyecto de reforestación y cómo su compra contribuye.</p>
+                </section>
+            </div>
+
+            <!-- Nueva sección para los mockups de Landing Page y QR -->
+            <div id="section-11-mockups" class="section-content">
+                <section class="text-center w-full max-w-4xl mx-auto flex flex-col justify-center items-center h-full">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                         <div class="mockup-card">
                             <div class="mockup-header">QR en Empaque</div>
                             <div class="mockup-content">
-                                <!-- Reemplaza 'src' con la URL de tu imagen real del código QR -->
-                                <img src="00--back.png" alt="Código QR" class="qr-code" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
-                                <p class="text-sm">Escanea para sembrar futuro.</p>
+                                <!-- Imagen del código QR -->
+                                <img src="00--back.png" alt="Código QR" class="w-full h-auto object-contain rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/150x150/1A202C/FFFFFF?text=QR';">
+                                <p class="mt-2 text-sm">Escanea para sembrar futuro.</p>
                             </div>
                         </div>
                         <div class="mockup-card">
                             <div class="mockup-header">Landing Page (Diseño Simplificado)</div>
                             <div class="mockup-content">
-                                <!-- Reemplaza 'src' con la URL de tu imagen real de la landing page -->
-                                <img src="04.png" alt="Landing Page" class="w-full h-auto object-contain rounded-md" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <!-- La imagen del mockup de la landing page -->
+                                <img src="04.png" alt="Landing Page" class="w-full h-auto object-contain rounded-md max-h-[60vh]" onerror="this.onerror=null;this.src='https://placehold.co/400x300/007BFF/FFFFFF?text=Landing+Page+Mockup+Error';">
                                 <h4 class="font-bold text-lg text-[#0056B3] mt-2">Proyecto Reforestación</h4>
                                 <p class="text-sm mt-1">Descubre cómo tu Lavatodo ayuda a plantar árboles en Ecuador. ¡Únete a la #HuellaLimpia!</p>
-                                <button class="mt-4 bg-[#007BFF] text-white px-4 py-2 rounded-md text-sm">Ver Más</button>
+                                <!-- Botón "Ver Más" eliminado -->
                             </div>
                         </div>
                     </div>
@@ -408,7 +413,7 @@
 
         <div class="navigation-buttons flex-shrink-0">
             <button id="prevBtn" class="nav-button">← Anterior</button>
-            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 13</span>
+            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 14</span>
             <button id="nextBtn" class="nav-button">Siguiente →</button>
         </div>
 
@@ -456,8 +461,9 @@
             { id: 'section-7', chartFn: createSocialImpactChart },
             { id: 'section-8', chartFn: null }, // Concepto Creativo
             { id: 'section-9', chartFn: null }, // Mockup Redes Sociales (solo texto)
-            { id: 'section-10-mockups', chartFn: null }, // Nueva sección para mockups
-            { id: 'section-11', chartFn: null }, // Mockup Landing Page y QR (anteriormente section-10)
+            { id: 'section-10-mockups', chartFn: null }, // Nueva sección para mockups de Redes Sociales
+            { id: 'section-11', chartFn: null }, // Mockup Landing Page y QR (solo texto)
+            { id: 'section-11-mockups', chartFn: null }, // Nueva sección para mockups de Landing Page y QR
             { id: 'section-12', chartFn: null } // Visión (anteriormente section-11)
         ];
 
