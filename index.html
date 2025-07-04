@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Fabril: Campaña Huella Limpia - Infografía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F8FF;
+            color: #1A202C;
+            display: flex;
+            flex-direction: column;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-node {
+            background-color: white;
+            border: 2px solid #007BFF;
+            color: #1A202C;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            flex-grow: 1;
+            margin: 0 0.5rem;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #FFC107;
+            align-self: center;
+            margin: 0 0.5rem;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #007BFF, #66B3FF);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .kpi-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #FFE66D;
+        }
+        .section-content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .section-content.active {
+            display: flex;
+        }
+        .navigation-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #F0F8FF;
+            padding: 1rem;
+            border-top: 1px solid #007BFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .nav-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #0056B3;
+        }
+        .nav-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .main-content-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: calc(100% - 140px);
+            overflow: hidden;
+        }
+        .mockup-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            max-width: 400px;
+            width: 100%;
+            /* text-align: left; REMOVED */
+        }
+        .mockup-header {
+            font-weight: bold;
+            color: #0056B3;
+            margin-bottom: 0.5rem;
+        }
+        .mockup-content {
+            background-color: #E0F2F7;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #1A202C;
+            text-align: center;
+        }
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background-color: #1A202C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            color: white;
+            font-weight: bold;
+            border-radius: 0.25rem;
+            margin: 1rem auto;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl flex-grow flex flex-col h-full">
+
+        <header class="text-center my-4 md:my-6 flex-shrink-0">
+            <h1 class="text-3xl md:text-5xl font-black text-[#0056B3] tracking-tight">La Fabril: La Industria de las Ideas</h1>
+            <p class="text-md md:text-lg mt-2 max-w-3xl mx-auto">Un análisis de su liderazgo y la propuesta de campaña sostenible <span class="font-bold text-[#007BFF]">"Huella Limpia"</span>.</p>
+        </header>
+
+        <main class="main-content-wrapper">
+
+            <div id="section-0" class="section-content active">
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Un Gigante Ecuatoriano</h2>
+                        <p class="mt-4 text-sm md:text-base">Fundada en 1968, La Fabril se ha consolidado como un pilar de la industria nacional, exportando a más de 20 países. Su liderazgo no solo se mide en volumen, sino en su capacidad para dominar categorías clave del consumo masivo, demostrando su profunda conexión con los hogares ecuatorianos.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 md:p-6 order-1 md:order-2">
+                        <h3 class="text-center font-bold mb-4 text-lg md:text-xl">Liderazgo en Categorías Clave</h3>
+                        <div class="chart-container">
+                            <canvas id="marketLeadershipChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div id="section-1" class="section-content">
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
+                    <div class="bg-white rounded-lg shadow-md p-4 md:p-6">
+                         <h3 class="text-center font-bold mb-4 text-lg md:text-xl">Perfil del Consumidor Principal</h3>
+                        <div class="chart-container">
+                            <canvas id="consumerProfileChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">El Corazón del Hogar</h2>
+                        <p class="mt-4 text-sm md:text-base">La Fabril se dirige a jefes de hogar de 25 a 45 años. Este público es pragmático y valora la calidad a un precio justo. Más importante aún, siente un fuerte orgullo por los productos ecuatorianos, lo que representa una conexión emocional que va más allá de la simple compra.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-2" class="section-content">
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Innovación vs. Tradición</h2>
+                        <p class="mt-4 text-sm md:text-base">Frente a competidores como Danec y Unilever, La Fabril se diferencia por una estrategia dual: un portafolio de productos muy amplio y un firme compromiso con la innovación sostenible. Mientras otros compiten en precio o alcance, La Fabril apuesta por un futuro más verde como valor diferencial clave.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 md:p-6">
+                        <h3 class="text-center font-bold mb-4 text-lg md:text-xl">Paisaje Competitivo</h3>
+                        <div class="chart-container">
+                            <canvas id="competitiveLandscapeChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div id="section-3" class="section-content">
+                <section class="text-center w-full max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Campaña "Huella Limpia": Objetivos Claros</h2>
+                    <p class="mt-4 text-sm md:text-base max-w-3xl mx-auto">La propuesta "Huella Limpia" busca traducir la visión sostenible de La Fabril en resultados medibles, conectando el acto cotidiano de lavar con un impacto ambiental positivo y tangible.</p>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="kpi-card">
+                            <div class="kpi-number">+5%</div>
+                            <div class="mt-2 text-xl font-bold">En Ventas</div>
+                            <p class="font-light text-sm">Incremento proyectado para Lavatodo Multiusos en el Q4 de 2025.</p>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-number">✓</div>
+                            <div class="mt-2 text-xl font-bold">Percepción de Marca</div>
+                            <p class="font-light text-sm">Fortalecer a La Fabril como líder en responsabilidad ambiental.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-4" class="section-content">
+                <section class="w-full max-w-5xl mx-auto">
+                     <h2 class="text-2xl md:text-3xl font-bold text-center text-[#0056B3]">Estrategia Multicanal: Del Like a la Acción</h2>
+                     <p class="mt-4 text-sm md:text-base text-center max-w-3xl mx-auto">La campaña integra medios digitales y físicos para guiar al consumidor en un viaje que va desde el descubrimiento en redes sociales hasta la participación activa en el proyecto de reforestación.</p>
+                     <div class="mt-10 flex flex-col space-y-4 md:space-y-0 md:flex-row md:items-center md:justify-center">
+                        <div class="flow-node">Redes Sociales<br/>(IG, FB, TikTok)</div>
+                        <div class="flow-arrow hidden md:block">→</div>
+                        <div class="text-center md:hidden text-2xl font-bold text-[#FFC107]">↓</div>
+                        <div class="flow-node">QR en Empaque<br/>(Punto de Venta)</div>
+                        <div class="flow-arrow hidden md:block">→</div>
+                        <div class="text-center md:hidden text-2xl font-bold text-[#FFC107]">↓</div>
+                        <div class="flow-node">Landing Page<br/>(Info. Reforestación)</div>
+                        <div class="flow-arrow hidden md:block">→</div>
+                        <div class="text-center md:hidden text-2xl font-bold text-[#FFC107]">↓</div>
+                        <div class="flow-node">Compra y Apoyo<br/>(Siembra Futuro)</div>
+                    </div>
+                </section>
+            </div>
+            
+            <div id="section-5" class="section-content">
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
+                     <div class="order-2 md:order-1">
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">El Futuro es Verde</h2>
+                        <p class="mt-4 text-sm md:text-base">La campaña "Huella Limpia" no termina con la venta. Cada compra contribuye a un proyecto de reforestación, proyectando un crecimiento tangible en el número de árboles plantados durante el último trimestre de 2025. Esto convierte a cada consumidor en un agente de cambio, sembrando un futuro más verde para todos.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 md:p-6 order-1 md:order-2">
+                        <h3 class="text-center font-bold mb-4 text-lg md:text-xl">Proyección de Reforestación (Q4 2025)</h3>
+                        <div class="chart-container">
+                            <canvas id="reforestationChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-6" class="section-content">
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Más Allá del Producto: Impacto Social</h2>
+                        <p class="mt-4 text-sm md:text-base">La Fabril no solo produce bienes, sino que también invierte activamente en el bienestar de las comunidades. A través de programas de desarrollo local y alianzas estratégicas, generamos oportunidades y contribuimos al crecimiento sostenible de la sociedad ecuatoriana.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 md:p-6">
+                        <h3 class="text-center font-bold mb-4 text-lg md:text-xl">Inversión Social por Área (2024)</h3>
+                        <div class="chart-container">
+                            <canvas id="socialImpactChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-7" class="section-content">
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
+                    <div class="order-2 md:order-1 text-left">
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Concepto Creativo: "Huella Limpia"</h2>
+                        <p class="mt-4 text-sm md:text-base">La campaña "Huella Limpia" se basa en el insight de que "Lo Que Cuida A Mi Familia Debe Cuidar También Al Planeta". Su concepto central es "Cada lavado deja una huella. Hagamos que sea verde", y su slogan es "Limpia tu hogar, siembra futuro".</p>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <div class="mockup-card mx-auto">
+                            <div class="mockup-header">Empaque Fotocrómico</div>
+                            <div class="mockup-content">
+                                <p>Envase de Lavatodo Multiusos que cambia de color con el sol, revelando una hoja como símbolo de impacto ambiental positivo.</p>
+                                <div class="w-full h-24 bg-gradient-to-r from-blue-300 to-green-300 rounded-md mt-2 flex items-center justify-center text-xs text-gray-700 font-semibold">
+                                    [Imagen de Empaque con Hoja]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-8" class="section-content">
+                <section class="text-center w-full max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Redes Sociales</h2>
+                    <p class="mt-4 text-md md:text-lg">La campaña se difundirá a través de Reels y Stories en Instagram, un Challenge en TikTok y publicidad pagada en Facebook, con contenido diseñado para maximizar el engagement.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="mockup-card">
+                            <div class="mockup-header">Post Estático (Instagram/Facebook)</div>
+                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                                <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
+                                    [Imagen de Plato Limpio con Hoja]
+                                </div>
+                                <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu cocina, mañana brillará en el bosque. #HuellaLimpia"</p>
+                            </div>
+                        </div>
+                        <div class="mockup-card">
+                            <div class="mockup-header">Reel (TikTok/Instagram)</div>
+                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                                <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
+                                    [Video de Niño Pintando Árbol]
+                                </div>
+                                <p class="mt-2 text-sm font-semibold">Transición de limpieza a reforestación.</p>
+                            </div>
+                        </div>
+                        <div class="mockup-card md:col-span-2">
+                            <div class="mockup-header">Carrusel (Instagram)</div>
+                            <div class="mockup-content flex flex-wrap justify-center items-center gap-2 h-32">
+                                <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
+                                    [Slide 1: Árboles Plantados]
+                                </div>
+                                <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
+                                    [Slide 2: Testimonio Comunidad]
+                                </div>
+                                <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
+                                    [Slide 3: CTA "Compra Aquí"]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-9" class="section-content">
+                <section class="text-center w-full max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Landing Page y QR</h2>
+                    <p class="mt-4 text-md md:text-lg">Un código QR en los empaques dirigirá a los consumidores a una landing page dedicada, con información detallada sobre el proyecto de reforestación y cómo su compra contribuye.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="mockup-card">
+                            <div class="mockup-header">QR en Empaque</div>
+                            <div class="mockup-content">
+                                <div class="qr-code">QR CODE</div>
+                                <p class="text-sm">Escanea para sembrar futuro.</p>
+                            </div>
+                        </div>
+                        <div class="mockup-card">
+                            <div class="mockup-header">Landing Page (Diseño Simplificado)</div>
+                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                                <h4 class="font-bold text-lg text-[#0056B3]">Proyecto Reforestación</h4>
+                                <p class="text-sm mt-2">Descubre cómo tu Lavatodo ayuda a plantar árboles en Ecuador. ¡Únete a la #HuellaLimpia!</p>
+                                <button class="mt-4 bg-[#007BFF] text-white px-4 py-2 rounded-md text-sm">Ver Más</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-10" class="section-content">
+                <section class="text-center w-full max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Sembrando el Mañana: Nuestra Visión</h2>
+                    <p class="mt-4 text-md md:text-lg">La Fabril se compromete a seguir liderando con innovación y responsabilidad. Nuestra visión a futuro se centra en expandir nuestro portafolio de productos sostenibles, fortalecer nuestras alianzas comunitarias y reducir aún más nuestra huella ambiental. Continuaremos siendo "La Industria de las Ideas", transformando el futuro con cada acción.</p>
+                    <div class="mt-8 text-5xl text-[#007BFF]">🌱💡🌍</div>
+                </section>
+            </div>
+
+        </main>
+
+        <div class="navigation-buttons flex-shrink-0">
+            <button id="prevBtn" class="nav-button">← Anterior</button>
+            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 11</span>
+            <button id="nextBtn" class="nav-button">Siguiente →</button>
+        </div>
+
+        <footer class="text-center mt-auto py-3 border-t border-[#007BFF]/30 flex-shrink-0">
+            <p class="text-[#1A202C] text-xs md:text-sm">Infografía generada a partir del análisis estratégico de La Fabril S.A. | Un ejercicio de visualización de datos.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const chartColors = {
+            primary: '#007BFF',
+            secondary: '#4ECDC4',
+            accent: '#66B3FF',
+            text: '#1A202C'
+        };
+
+        let currentSectionIndex = 0;
+        const sections = [
+            { id: 'section-0', chartFn: createMarketLeadershipChart },
+            { id: 'section-1', chartFn: createConsumerProfileChart },
+            { id: 'section-2', chartFn: createCompetitiveLandscapeChart },
+            { id: 'section-3', chartFn: null },
+            { id: 'section-4', chartFn: null },
+            { id: 'section-5', chartFn: createReforestationChart },
+            { id: 'section-6', chartFn: createSocialImpactChart },
+            { id: 'section-7', chartFn: null }, // Concepto Creativo
+            { id: 'section-8', chartFn: null }, // Mockup Redes Sociales
+            { id: 'section-9', chartFn: null }, // Mockup Landing Page y QR
+            { id: 'section-10', chartFn: null } // Visión (anteriormente sección 7)
+        ];
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const pageIndicator = document.getElementById('pageIndicator');
+
+        function updateNavigation() {
+            prevBtn.disabled = currentSectionIndex === 0;
+            nextBtn.disabled = currentSectionIndex === sections.length - 1;
+            pageIndicator.textContent = `${currentSectionIndex + 1} / ${sections.length}`;
+        }
+
+        function showSection(index) {
+            sections.forEach((section, i) => {
+                const element = document.getElementById(section.id);
+                if (i === index) {
+                    element.classList.add('active');
+                    element.classList.remove('hidden');
+                    if (section.chartFn && !element.dataset.chartInitialized) {
+                        section.chartFn();
+                        element.dataset.chartInitialized = 'true';
+                    }
+                } else {
+                    element.classList.remove('active');
+                    element.classList.add('hidden');
+                }
+            });
+            updateNavigation();
+        }
+
+        function goToNextSection() {
+            if (currentSectionIndex < sections.length - 1) {
+                currentSectionIndex++;
+                showSection(currentSectionIndex);
+            }
+        }
+
+        function goToPreviousSection() {
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                showSection(currentSectionIndex);
+            }
+        }
+
+        prevBtn.addEventListener('click', goToPreviousSection);
+        nextBtn.addEventListener('click', goToNextSection);
+
+        function createMarketLeadershipChart() {
+            new Chart(document.getElementById('marketLeadershipChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Aceites', 'Detergentes', 'Margarinas', 'Cuidado Personal'],
+                    datasets: [{
+                        label: 'Liderazgo de Mercado',
+                        data: [45, 35, 25, 20],
+                        backgroundColor: [chartColors.primary, chartColors.secondary, chartColors.accent, '#ADD8E6'],
+                        borderColor: '#F0F8FF',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: chartColors.text }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createConsumerProfileChart() {
+            new Chart(document.getElementById('consumerProfileChart'), {
+                type: 'radar',
+                data: {
+                    labels: ['Pragmáticos', ['Valoran Calidad', '& Precio'], ['Orgullo', 'Ecuatoriano'], ['Abiertos a', 'Soluciones'], 'Leales a Marcas'],
+                    datasets: [{
+                        label: 'Perfil del Consumidor',
+                        data: [9, 8, 8, 7, 6],
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                        borderColor: chartColors.primary,
+                        pointBackgroundColor: chartColors.primary,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: chartColors.primary
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: tooltipTitleCallback.plugins,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(26, 32, 44, 0.2)' },
+                            grid: { color: 'rgba(26, 32, 44, 0.2)' },
+                            pointLabels: {
+                                color: chartColors.text,
+                                font: { size: 12 }
+                            },
+                            ticks: {
+                                backdropColor: '#F0F8FF',
+                                color: chartColors.text
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createCompetitiveLandscapeChart() {
+            new Chart(document.getElementById('competitiveLandscapeChart'), {
+                type: 'bubble',
+                data: {
+                    labels: ['La Fabril', 'Unilever', 'Danec'],
+                    datasets: [{
+                        label: 'La Fabril',
+                        data: [{x: 8, y: 9, r: 25}],
+                        backgroundColor: chartColors.primary,
+                    }, {
+                        label: 'Unilever',
+                        data: [{x: 9, y: 6, r: 20}],
+                        backgroundColor: chartColors.secondary,
+                    }, {
+                        label: 'Danec',
+                        data: [{x: 5, y: 4, r: 15}],
+                        backgroundColor: chartColors.accent,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'bottom', labels: { color: chartColors.text } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.chart.data.labels[context.datasetIndex]}: Presencia de Mercado (${context.raw.r})`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            title: { display: true, text: 'Amplitud de Portafolio', color: chartColors.text },
+                            grid: { color: 'rgba(26, 32, 44, 0.1)' }
+                        },
+                        y: { 
+                            title: { display: true, text: 'Enfoque Sostenible', color: chartColors.text },
+                            grid: { color: 'rgba(26, 32, 44, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createReforestationChart() {
+            new Chart(document.getElementById('reforestationChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Octubre', 'Noviembre', 'Diciembre'],
+                    datasets: [{
+                        label: 'Árboles Plantados (Acumulado)',
+                        data: [500, 1500, 3500],
+                        fill: true,
+                        backgroundColor: 'rgba(78, 205, 196, 0.2)',
+                        borderColor: chartColors.secondary,
+                        tension: 0.4,
+                        pointBackgroundColor: chartColors.secondary,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: tooltipTitleCallback.plugins,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(26, 32, 44, 0.1)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createSocialImpactChart() {
+            new Chart(document.getElementById('socialImpactChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Educación', 'Salud', 'Desarrollo Comunitario', 'Empleo Local'],
+                    datasets: [{
+                        label: 'Inversión (miles USD)',
+                        data: [150, 100, 200, 180],
+                        backgroundColor: [chartColors.primary, chartColors.secondary, chartColors.accent, '#ADD8E6'],
+                        borderColor: '#F0F8FF',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: tooltipTitleCallback.plugins,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(26, 32, 44, 0.1)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection(currentSectionIndex);
+        });
+    </script>
+</body>
+</html>
