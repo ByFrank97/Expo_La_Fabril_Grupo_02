@@ -120,7 +120,7 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            overflow: hidden;
+            overflow-y: auto; /* Permite scroll vertical si el contenido excede la altura */
         }
         .mockup-card {
             background-color: white;
@@ -137,15 +137,21 @@
             margin-bottom: 0.5rem;
         }
         .mockup-content {
-            background-color: #E0F2F7;
+            background-color: white;
             border-radius: 0.5rem;
             padding: 1rem;
             color: #1A202C;
             text-align: center;
+            height: auto; /* Asegura que el contenido dicte la altura */
+            min-height: 250px; /* Altura mínima para evitar que se vea muy pequeño */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .mockup-content img {
             width: 100%;
-            height: 50vh; /* Ajustado a 50% de la altura del viewport */
+            max-height: 60vh; /* Ajustado para que las imágenes sean más grandes */
             object-fit: contain;
         }
         .qr-code {
@@ -327,7 +333,7 @@
                             <div class="mockup-header">Empaque Fotocrómico</div>
                             <div class="mockup-content">
                                 <!-- Solo la imagen aquí -->
-                                <img src="00.png" alt="Empaque Fotocrómico" class="w-full h-auto object-contain rounded-md max-h-[400px]" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="00.png" alt="Empaque Fotocrómico" class="w-full h-[50vh] object-contain rounded-md" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                             </div>
                         </div>
                     </div>
@@ -338,20 +344,24 @@
                 <section class="text-center w-full max-w-5xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Redes Sociales</h2>
                     <p class="mt-4 text-md md:text-lg">La campaña se difundirá a través de Reels y Stories en Instagram, un Challenge en TikTok y publicidad pagada en Facebook, con contenido diseñado para maximizar el engagement.</p>
+                </section>
+            </div>
+
+            <!-- Nueva sección para los mockups de redes sociales -->
+            <div id="section-10-mockups" class="section-content">
+                <section class="text-center w-full max-w-5xl mx-auto flex flex-col justify-center items-center h-full"> <!-- Añadido flexbox para centrar contenido -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                         <div class="mockup-card mx-auto">
                             <div class="mockup-header">Post Estático (Instagram/Facebook)</div>
                             <div class="mockup-content flex flex-col justify-center items-center">
-                                <!-- Reemplaza 'src' con la URL de tu imagen real del post estático -->
-                                <img src="01.png" alt="Post Estático" class="w-full h-[50vh] object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="01.png" alt="Post Estático" class="w-full h-auto object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                                 <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu cocina, mañana brillará en el bosque. #HuellaLimpia"</p>
                             </div>
                         </div>
                         <div class="mockup-card mx-auto">
                             <div class="mockup-header">Reel (TikTok/Instagram)</div>
                             <div class="mockup-content flex flex-col justify-center items-center">
-                                <!-- Reemplaza 'src' con la URL de tu imagen real del reel -->
-                                <img src="02.png" alt="Reel" class="w-full h-[50vh] object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="02.png" alt="Reel" class="w-full h-auto object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                                 <p class="mt-2 text-sm font-semibold">Transición de limpieza a reforestación.</p>
                             </div>
                         </div>
@@ -359,7 +369,7 @@
                 </section>
             </div>
 
-            <div id="section-10" class="section-content">
+            <div id="section-11" class="section-content">
                 <section class="text-center w-full max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Landing Page y QR</h2>
                     <p class="mt-4 text-md md:text-lg">Un código QR en los empaques dirigirá a los consumidores a una landing page dedicada, con información detallada sobre el proyecto de reforestación y cómo su compra contribuye.</p>
@@ -368,15 +378,15 @@
                             <div class="mockup-header">QR en Empaque</div>
                             <div class="mockup-content">
                                 <!-- Reemplaza 'src' con la URL de tu imagen real del código QR -->
-                                <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Código QR" class="qr-code" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="00--back.png" alt="Código QR" class="qr-code" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                                 <p class="text-sm">Escanea para sembrar futuro.</p>
                             </div>
                         </div>
                         <div class="mockup-card">
                             <div class="mockup-header">Landing Page (Diseño Simplificado)</div>
-                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                            <div class="mockup-content">
                                 <!-- Reemplaza 'src' con la URL de tu imagen real de la landing page -->
-                                <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Landing Page" class="w-full h-full object-cover rounded-md" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="04.png" alt="Landing Page" class="w-full h-auto object-contain rounded-md" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                                 <h4 class="font-bold text-lg text-[#0056B3] mt-2">Proyecto Reforestación</h4>
                                 <p class="text-sm mt-1">Descubre cómo tu Lavatodo ayuda a plantar árboles en Ecuador. ¡Únete a la #HuellaLimpia!</p>
                                 <button class="mt-4 bg-[#007BFF] text-white px-4 py-2 rounded-md text-sm">Ver Más</button>
@@ -386,11 +396,11 @@
                 </section>
             </div>
 
-            <div id="section-11" class="section-content">
+            <div id="section-12" class="section-content">
                 <section class="text-center w-full max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Sembrando el Mañana: Nuestra Visión</h2>
                     <p class="mt-4 text-md md:text-lg">La Fabril se compromete a seguir liderando con innovación y responsabilidad. Nuestra visión a futuro se centra en expandir nuestro portafolio de productos sostenibles, fortalecer nuestras alianzas comunitarias y reducir aún más nuestra huella ambiental. Continuaremos siendo "La Industria de las Ideas", transformando el futuro con cada acción.</p>
-                    <div class="mt-8 text-5xl text-[#007BFF]">�💡🌍</div>
+                    <div class="mt-8 text-5xl text-[#007BFF]">🌱💡🌍</div>
                 </section>
             </div>
 
@@ -398,7 +408,7 @@
 
         <div class="navigation-buttons flex-shrink-0">
             <button id="prevBtn" class="nav-button">← Anterior</button>
-            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 12</span>
+            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 13</span>
             <button id="nextBtn" class="nav-button">Siguiente →</button>
         </div>
 
@@ -445,9 +455,10 @@
             { id: 'section-6', chartFn: createReforestationChart },
             { id: 'section-7', chartFn: createSocialImpactChart },
             { id: 'section-8', chartFn: null }, // Concepto Creativo
-            { id: 'section-9', chartFn: null }, // Mockup Redes Sociales
-            { id: 'section-10', chartFn: null }, // Mockup Landing Page y QR
-            { id: 'section-11', chartFn: null } // Visión
+            { id: 'section-9', chartFn: null }, // Mockup Redes Sociales (solo texto)
+            { id: 'section-10-mockups', chartFn: null }, // Nueva sección para mockups
+            { id: 'section-11', chartFn: null }, // Mockup Landing Page y QR (anteriormente section-10)
+            { id: 'section-12', chartFn: null } // Visión (anteriormente section-11)
         ];
 
         const prevBtn = document.getElementById('prevBtn');
@@ -683,4 +694,3 @@
     </script>
 </body>
 </html>
-�
