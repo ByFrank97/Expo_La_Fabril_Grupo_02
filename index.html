@@ -77,9 +77,12 @@
             text-align: center;
             padding: 1rem;
             box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
         }
         .section-content.active {
             display: flex;
+            opacity: 1;
         }
         .navigation-buttons {
             position: fixed;
@@ -128,7 +131,6 @@
             margin-top: 1.5rem;
             max-width: 400px;
             width: 100%;
-            /* text-align: left; REMOVED */
         }
         .mockup-header {
             font-weight: bold;
@@ -155,6 +157,20 @@
             border-radius: 0.25rem;
             margin: 1rem auto;
         }
+        .logo-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: #007BFF;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-top: 2rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -169,6 +185,15 @@
         <main class="main-content-wrapper">
 
             <div id="section-0" class="section-content active">
+                <section class="flex flex-col items-center justify-center h-full w-full">
+                    <h1 class="text-6xl md:text-8xl font-black text-[#0056B3] tracking-tight">La Fabril</h1>
+                    <div class="logo-placeholder">
+                        [Logo Aquí]
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-1" class="section-content">
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
                     <div class="order-2 md:order-1">
                         <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Un Gigante Ecuatoriano</h2>
@@ -183,7 +208,7 @@
                 </section>
             </div>
             
-            <div id="section-1" class="section-content">
+            <div id="section-2" class="section-content">
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
                     <div class="bg-white rounded-lg shadow-md p-4 md:p-6">
                          <h3 class="text-center font-bold mb-4 text-lg md:text-xl">Perfil del Consumidor Principal</h3>
@@ -198,7 +223,7 @@
                 </section>
             </div>
 
-            <div id="section-2" class="section-content">
+            <div id="section-3" class="section-content">
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
                     <div>
                         <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Innovación vs. Tradición</h2>
@@ -213,7 +238,7 @@
                 </section>
             </div>
             
-            <div id="section-3" class="section-content">
+            <div id="section-4" class="section-content">
                 <section class="text-center w-full max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Campaña "Huella Limpia": Objetivos Claros</h2>
                     <p class="mt-4 text-sm md:text-base max-w-3xl mx-auto">La propuesta "Huella Limpia" busca traducir la visión sostenible de La Fabril en resultados medibles, conectando el acto cotidiano de lavar con un impacto ambiental positivo y tangible.</p>
@@ -232,7 +257,7 @@
                 </section>
             </div>
 
-            <div id="section-4" class="section-content">
+            <div id="section-5" class="section-content">
                 <section class="w-full max-w-5xl mx-auto">
                      <h2 class="text-2xl md:text-3xl font-bold text-center text-[#0056B3]">Estrategia Multicanal: Del Like a la Acción</h2>
                      <p class="mt-4 text-sm md:text-base text-center max-w-3xl mx-auto">La campaña integra medios digitales y físicos para guiar al consumidor en un viaje que va desde el descubrimiento en redes sociales hasta la participación activa en el proyecto de reforestación.</p>
@@ -251,7 +276,7 @@
                 </section>
             </div>
             
-            <div id="section-5" class="section-content">
+            <div id="section-6" class="section-content">
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
                      <div class="order-2 md:order-1">
                         <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">El Futuro es Verde</h2>
@@ -266,7 +291,7 @@
                 </section>
             </div>
 
-            <div id="section-6" class="section-content">
+            <div id="section-7" class="section-content">
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
                     <div>
                         <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Más Allá del Producto: Impacto Social</h2>
@@ -281,7 +306,7 @@
                 </section>
             </div>
 
-            <div id="section-7" class="section-content">
+            <div id="section-8" class="section-content">
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-5xl mx-auto">
                     <div class="order-2 md:order-1 text-left">
                         <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Concepto Creativo: "Huella Limpia"</h2>
@@ -292,50 +317,8 @@
                             <div class="mockup-header">Empaque Fotocrómico</div>
                             <div class="mockup-content">
                                 <p>Envase de Lavatodo Multiusos que cambia de color con el sol, revelando una hoja como símbolo de impacto ambiental positivo.</p>
-                                <div class="w-full h-24 bg-gradient-to-r from-blue-300 to-green-300 rounded-md mt-2 flex items-center justify-center text-xs text-gray-700 font-semibold">
-                                    [Imagen de Empaque con Hoja]
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="section-8" class="section-content">
-                <section class="text-center w-full max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Redes Sociales</h2>
-                    <p class="mt-4 text-md md:text-lg">La campaña se difundirá a través de Reels y Stories en Instagram, un Challenge en TikTok y publicidad pagada en Facebook, con contenido diseñado para maximizar el engagement.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                        <div class="mockup-card">
-                            <div class="mockup-header">Post Estático (Instagram/Facebook)</div>
-                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
-                                <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
-                                    [Imagen de Plato Limpio con Hoja]
-                                </div>
-                                <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu cocina, mañana brillará en el bosque. #HuellaLimpia"</p>
-                            </div>
-                        </div>
-                        <div class="mockup-card">
-                            <div class="mockup-header">Reel (TikTok/Instagram)</div>
-                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
-                                <div class="w-32 h-32 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
-                                    [Video de Niño Pintando Árbol]
-                                </div>
-                                <p class="mt-2 text-sm font-semibold">Transición de limpieza a reforestación.</p>
-                            </div>
-                        </div>
-                        <div class="mockup-card md:col-span-2">
-                            <div class="mockup-header">Carrusel (Instagram)</div>
-                            <div class="mockup-content flex flex-wrap justify-center items-center gap-2 h-32">
-                                <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
-                                    [Slide 1: Árboles Plantados]
-                                </div>
-                                <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
-                                    [Slide 2: Testimonio Comunidad]
-                                </div>
-                                <div class="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500">
-                                    [Slide 3: CTA "Compra Aquí"]
-                                </div>
+                                <!-- Reemplaza 'src' con la URL de tu imagen real del empaque -->
+                                <img src="https://placehold.co/400x96/E0F2F7/1A202C?text=Empaque" alt="Empaque Fotocrómico" class="w-full h-24 object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x96/E0F2F7/1A202C?text=Error';">
                             </div>
                         </div>
                     </div>
@@ -343,23 +326,37 @@
             </div>
 
             <div id="section-9" class="section-content">
-                <section class="text-center w-full max-w-4xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Landing Page y QR</h2>
-                    <p class="mt-4 text-md md:text-lg">Un código QR en los empaques dirigirá a los consumidores a una landing page dedicada, con información detallada sobre el proyecto de reforestación y cómo su compra contribuye.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                        <div class="mockup-card">
-                            <div class="mockup-header">QR en Empaque</div>
-                            <div class="mockup-content">
-                                <div class="qr-code">QR CODE</div>
-                                <p class="text-sm">Escanea para sembrar futuro.</p>
+                <section class="text-center w-full max-w-5xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Redes Sociales</h2>
+                    <p class="mt-4 text-md md:text-lg">La campaña se difundirá a través de Reels y Stories en Instagram, un Challenge en TikTok y publicidad pagada en Facebook, con contenido diseñado para maximizar el engagement.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="mockup-card mx-auto">
+                            <div class="mockup-header">Post Estático (Instagram/Facebook)</div>
+                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                                <!-- Reemplaza 'src' con la URL de tu imagen real del post estático -->
+                                <img src="https://placehold.co/128x128/E0F2F7/1A202C?text=Post" alt="Post Estático" class="w-32 h-32 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/128x128/E0F2F7/1A202C?text=Error';">
+                                <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu cocina, mañana brillará en el bosque. #HuellaLimpia"</p>
                             </div>
                         </div>
-                        <div class="mockup-card">
-                            <div class="mockup-header">Landing Page (Diseño Simplificado)</div>
+                        <div class="mockup-card mx-auto">
+                            <div class="mockup-header">Reel (TikTok/Instagram)</div>
                             <div class="mockup-content h-48 flex flex-col justify-center items-center">
-                                <h4 class="font-bold text-lg text-[#0056B3]">Proyecto Reforestación</h4>
-                                <p class="text-sm mt-2">Descubre cómo tu Lavatodo ayuda a plantar árboles en Ecuador. ¡Únete a la #HuellaLimpia!</p>
-                                <button class="mt-4 bg-[#007BFF] text-white px-4 py-2 rounded-md text-sm">Ver Más</button>
+                                <!-- Reemplaza 'src' con la URL de tu imagen real del reel -->
+                                <img src="https://placehold.co/128x128/E0F2F7/1A202C?text=Reel" alt="Reel" class="w-32 h-32 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/128x128/E0F2F7/1A202C?text=Error';">
+                                <p class="mt-2 text-sm font-semibold">Transición de limpieza a reforestación.</p>
+                            </div>
+                        </div>
+                        <div class="mockup-card mx-auto">
+                            <div class="mockup-header">Carrusel (Instagram)</div>
+                            <div class="mockup-content flex flex-col justify-center items-center h-48">
+                                <div class="flex flex-wrap justify-center items-center gap-2">
+                                    <!-- Reemplaza 'src' con la URL de tu imagen real del Slide 1 -->
+                                    <img src="https://placehold.co/96x96/E0F2F7/1A202C?text=Slide1" alt="Slide 1: Árboles Plantados" class="w-24 h-24 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/E0F2F7/1A202C?text=Error';">
+                                    <!-- Reemplaza 'src' con la URL de tu imagen real del Slide 2 -->
+                                    <img src="https://placehold.co/96x96/E0F2F7/1A202C?text=Slide2" alt="Slide 2: Testimonio Comunidad" class="w-24 h-24 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/E0F2F7/1A202C?text=Error';">
+                                    <!-- Reemplaza 'src' con la URL de tu imagen real del Slide 3 -->
+                                    <img src="https://placehold.co/96x96/E0F2F7/1A202C?text=Slide3" alt="Slide 3: CTA Compra Aquí" class="w-24 h-24 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/E0F2F7/1A202C?text=Error';">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -367,6 +364,33 @@
             </div>
 
             <div id="section-10" class="section-content">
+                <section class="text-center w-full max-w-4xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Landing Page y QR</h2>
+                    <p class="mt-4 text-md md:text-lg">Un código QR en los empaques dirigirá a los consumidores a una landing page dedicada, con información detallada sobre el proyecto de reforestación y cómo su compra contribuye.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="mockup-card">
+                            <div class="mockup-header">QR en Empaque</div>
+                            <div class="mockup-content">
+                                <!-- Reemplaza 'src' con la URL de tu imagen real del código QR -->
+                                <img src="https://placehold.co/100x100/1A202C/FFFFFF?text=QR+CODE" alt="Código QR" class="qr-code" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1A202C/FFFFFF?text=Error';">
+                                <p class="text-sm">Escanea para sembrar futuro.</p>
+                            </div>
+                        </div>
+                        <div class="mockup-card">
+                            <div class="mockup-header">Landing Page (Diseño Simplificado)</div>
+                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                                <!-- Reemplaza 'src' con la URL de tu imagen real de la landing page -->
+                                <img src="https://placehold.co/400x192/E0F2F7/1A202C?text=Landing+Page" alt="Landing Page" class="w-full h-full object-cover rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/400x192/E0F2F7/1A202C?text=Error';">
+                                <h4 class="font-bold text-lg text-[#0056B3] mt-2">Proyecto Reforestación</h4>
+                                <p class="text-sm mt-1">Descubre cómo tu Lavatodo ayuda a plantar árboles en Ecuador. ¡Únete a la #HuellaLimpia!</p>
+                                <button class="mt-4 bg-[#007BFF] text-white px-4 py-2 rounded-md text-sm">Ver Más</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="section-11" class="section-content">
                 <section class="text-center w-full max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Sembrando el Mañana: Nuestra Visión</h2>
                     <p class="mt-4 text-md md:text-lg">La Fabril se compromete a seguir liderando con innovación y responsabilidad. Nuestra visión a futuro se centra en expandir nuestro portafolio de productos sostenibles, fortalecer nuestras alianzas comunitarias y reducir aún más nuestra huella ambiental. Continuaremos siendo "La Industria de las Ideas", transformando el futuro con cada acción.</p>
@@ -378,7 +402,7 @@
 
         <div class="navigation-buttons flex-shrink-0">
             <button id="prevBtn" class="nav-button">← Anterior</button>
-            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 11</span>
+            <span id="pageIndicator" class="text-lg font-bold text-[#1A202C]">1 / 12</span>
             <button id="nextBtn" class="nav-button">Siguiente →</button>
         </div>
 
@@ -416,17 +440,18 @@
 
         let currentSectionIndex = 0;
         const sections = [
-            { id: 'section-0', chartFn: createMarketLeadershipChart },
-            { id: 'section-1', chartFn: createConsumerProfileChart },
-            { id: 'section-2', chartFn: createCompetitiveLandscapeChart },
-            { id: 'section-3', chartFn: null },
+            { id: 'section-0', chartFn: null }, // Portada
+            { id: 'section-1', chartFn: createMarketLeadershipChart },
+            { id: 'section-2', chartFn: createConsumerProfileChart },
+            { id: 'section-3', chartFn: createCompetitiveLandscapeChart },
             { id: 'section-4', chartFn: null },
-            { id: 'section-5', chartFn: createReforestationChart },
-            { id: 'section-6', chartFn: createSocialImpactChart },
-            { id: 'section-7', chartFn: null }, // Concepto Creativo
-            { id: 'section-8', chartFn: null }, // Mockup Redes Sociales
-            { id: 'section-9', chartFn: null }, // Mockup Landing Page y QR
-            { id: 'section-10', chartFn: null } // Visión (anteriormente sección 7)
+            { id: 'section-5', chartFn: null },
+            { id: 'section-6', chartFn: createReforestationChart },
+            { id: 'section-7', chartFn: createSocialImpactChart },
+            { id: 'section-8', chartFn: null }, // Concepto Creativo
+            { id: 'section-9', chartFn: null }, // Mockup Redes Sociales
+            { id: 'section-10', chartFn: null }, // Mockup Landing Page y QR
+            { id: 'section-11', chartFn: null } // Visión
         ];
 
         const prevBtn = document.getElementById('prevBtn');
