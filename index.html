@@ -114,13 +114,12 @@
             cursor: not-allowed;
         }
         .main-content-wrapper {
-            flex-grow: 1; /* Permite que ocupe el espacio restante */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
-            /* height: calc(100% - 80px); -- Altura ya no es fija, se adapta con flex-grow */
             overflow: hidden;
         }
         .mockup-card {
@@ -144,6 +143,11 @@
             color: #1A202C;
             text-align: center;
         }
+        .mockup-content img {
+            width: 100%;
+            height: 50vh; /* Ajustado a 50% de la altura del viewport */
+            object-fit: contain;
+        }
         .qr-code {
             width: 100px;
             height: 100px;
@@ -159,20 +163,19 @@
         }
         /* Estilos para el logo de la portada */
         .logo-container-large {
-            width: 350px; /* Tamaño más grande */
-            height: 350px; /* Tamaño más grande */
+            width: 350px;
+            height: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 2rem;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            border-radius: 1rem; /* Añadido: Esquinas redondeadas */
+            border-radius: 1rem;
             overflow: hidden;
         }
         .logo-container-large img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Para que la imagen se ajuste sin recortar */
+            object-fit: contain;
         }
     </style>
 </head>
@@ -189,11 +192,11 @@
         <main class="main-content-wrapper">
 
             <div id="section-0" class="section-content active">
-                <section class="flex flex-col items-center justify-start h-full w-full pt-16"> <!-- Ajustado para mover el título más arriba -->
-                    <h1 class="text-7xl md:text-9xl font-black text-[#0056B3] tracking-tight mb-8">La Fabril</h1> <!-- Título más grande y con margen inferior -->
+                <section class="flex flex-col items-center justify-start h-full w-full pt-16">
+                    <h1 class="text-7xl md:text-9xl font-black text-[#0056B3] tracking-tight mb-8">La Fabril</h1>
                     <div class="logo-container-large">
                         <!-- Reemplaza 'src' con la URL de tu logo real -->
-                        <img src="logo.webp" alt="Logo La Fabril" onerror="this.onerror=null;this.src='https://www.lafabril.com.ec/';">
+                        <img src="logo.webp" alt="Logo La Fabril" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                     </div>
                 </section>
             </div>
@@ -316,14 +319,15 @@
                     <div class="order-2 md:order-1 text-left">
                         <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Concepto Creativo: "Huella Limpia"</h2>
                         <p class="mt-4 text-sm md:text-base">La campaña "Huella Limpia" se basa en el insight de que "Lo Que Cuida A Mi Familia Debe Cuidar También Al Planeta". Su concepto central es "Cada lavado deja una huella. Hagamos que sea verde", y su slogan es "Limpia tu hogar, siembra futuro".</p>
+                        <!-- Texto del mockup movido aquí -->
+                        <p class="mt-4 text-sm md:text-base">Envase de Lavatodo Multiusos que cambia de color con el sol, revelando una hoja como símbolo de impacto ambiental positivo.</p>
                     </div>
                     <div class="order-1 md:order-2">
                         <div class="mockup-card mx-auto">
                             <div class="mockup-header">Empaque Fotocrómico</div>
                             <div class="mockup-content">
-                                <p>Envase de Lavatodo Multiusos que cambia de color con el sol, revelando una hoja como símbolo de impacto ambiental positivo.</p>
-                                <!-- Reemplaza 'src' con la URL de tu imagen real del empaque -->
-                                <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Empaque Fotocrómico" class="w-full h-24 object-cover rounded-md" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <!-- Solo la imagen aquí -->
+                                <img src="00.png" alt="Empaque Fotocrómico" class="w-full h-auto object-contain rounded-md max-h-[400px]" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                             </div>
                         </div>
                     </div>
@@ -334,34 +338,21 @@
                 <section class="text-center w-full max-w-5xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Mockup: Redes Sociales</h2>
                     <p class="mt-4 text-md md:text-lg">La campaña se difundirá a través de Reels y Stories en Instagram, un Challenge en TikTok y publicidad pagada en Facebook, con contenido diseñado para maximizar el engagement.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                         <div class="mockup-card mx-auto">
                             <div class="mockup-header">Post Estático (Instagram/Facebook)</div>
-                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                            <div class="mockup-content flex flex-col justify-center items-center">
                                 <!-- Reemplaza 'src' con la URL de tu imagen real del post estático -->
-                                <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Post Estático" class="w-32 h-32 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="01.png" alt="Post Estático" class="w-full h-[50vh] object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                                 <p class="mt-2 text-sm font-semibold">"Lo que hoy brilla en tu cocina, mañana brillará en el bosque. #HuellaLimpia"</p>
                             </div>
                         </div>
                         <div class="mockup-card mx-auto">
                             <div class="mockup-header">Reel (TikTok/Instagram)</div>
-                            <div class="mockup-content h-48 flex flex-col justify-center items-center">
+                            <div class="mockup-content flex flex-col justify-center items-center">
                                 <!-- Reemplaza 'src' con la URL de tu imagen real del reel -->
-                                <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Reel" class="w-32 h-32 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
+                                <img src="02.png" alt="Reel" class="w-full h-[50vh] object-contain rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
                                 <p class="mt-2 text-sm font-semibold">Transición de limpieza a reforestación.</p>
-                            </div>
-                        </div>
-                        <div class="mockup-card mx-auto">
-                            <div class="mockup-header">Carrusel (Instagram)</div>
-                            <div class="mockup-content flex flex-col justify-center items-center h-48">
-                                <div class="flex flex-wrap justify-center items-center gap-2">
-                                    <!-- Reemplaza 'src' con la URL de tu imagen real del Slide 1 -->
-                                    <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Slide 1: Árboles Plantados" class="w-24 h-24 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
-                                    <!-- Reemplaza 'src' con la URL de tu imagen real del Slide 2 -->
-                                    <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Slide 2: Testimonio Comunidad" class="w-24 h-24 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
-                                    <!-- Reemplaza 'src' con la URL de tu imagen real del Slide 3 -->
-                                    <img src="https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png" alt="Slide 3: CTA Compra Aquí" class="w-24 h-24 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://cdn.prod.website-files.com/642d682a6e4ca0d303c81fdf/67b622df1ed350fb2bc97f3c_Google%20Chrome%202025-02-19%2021.28.34.png?text=Error';">
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -399,7 +390,7 @@
                 <section class="text-center w-full max-w-4xl mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-[#0056B3]">Sembrando el Mañana: Nuestra Visión</h2>
                     <p class="mt-4 text-md md:text-lg">La Fabril se compromete a seguir liderando con innovación y responsabilidad. Nuestra visión a futuro se centra en expandir nuestro portafolio de productos sostenibles, fortalecer nuestras alianzas comunitarias y reducir aún más nuestra huella ambiental. Continuaremos siendo "La Industria de las Ideas", transformando el futuro con cada acción.</p>
-                    <div class="mt-8 text-5xl text-[#007BFF]">🌱💡🌍</div>
+                    <div class="mt-8 text-5xl text-[#007BFF]">�💡🌍</div>
                 </section>
             </div>
 
@@ -462,7 +453,7 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const pageIndicator = document.getElementById('pageIndicator');
-        const mainHeader = document.getElementById('mainHeader'); // Referencia al encabezado
+        const mainHeader = document.getElementById('mainHeader');
 
         function updateNavigation() {
             prevBtn.disabled = currentSectionIndex === 0;
@@ -692,3 +683,4 @@
     </script>
 </body>
 </html>
+�
